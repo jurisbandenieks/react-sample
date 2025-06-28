@@ -2,6 +2,8 @@ import { ButtonComponent, GridComponent } from "@/components";
 import { useRefreshUsers, useUsers } from "@/hooks";
 import type { UserModel } from "@/types";
 import styles from "./Dashboard.module.css";
+import { useAtom } from "jotai";
+import { userAtom } from "@/store";
 
 const columns: { headerName: string; field: keyof UserModel }[] = [
   { headerName: "ID", field: "id" },
@@ -10,7 +12,8 @@ const columns: { headerName: string; field: keyof UserModel }[] = [
 ];
 
 export const Dashboard = () => {
-  const { data, isLoading, error } = useUsers();
+  const [data] = useAtom(userAtom);
+  const { isLoading, error } = useUsers();
 
   const refreshUsers = useRefreshUsers();
 
