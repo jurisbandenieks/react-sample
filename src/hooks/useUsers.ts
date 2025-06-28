@@ -17,7 +17,7 @@ export const useUsers = () => {
     if (data) {
       setData(data as UserModel[]);
     }
-  }, [data, setData]);
+  }, [data]);
 
   return { data, isLoading, error };
 };
